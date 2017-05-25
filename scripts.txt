@@ -1,0 +1,44 @@
+--------VIDEO-------
+
+Ubuntu 16.04-05
+
+sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev
+
+git clone https://github.com/rafabarzotto/runtime_data_openalpr_br
+
+cd /usr/share/openalpr
+sudo mv runtime_data runtime_data_old
+
+sudo cp ---->
+
+apt-get install python-beanstalkc
+
+update-rc.d -f alprd remove
+update-rc.d -f openalprd-daemon remove
+
+mkdir out
+mkdir fotos
+mkdir /usr/local/bin/plateservice
+sudo cp plateservice.py /usr/local/bin/plateservice/
+sudo cp matar_processos.sh /usr/local/bin/plateservice/
+sudo cp plateservice.sh /etc/init.d/
+sudo chmod 755 /usr/local/bin/plateservice/plateservice.py
+sudo chmod 755 /usr/local/bin/plateservice/matar_processos.sh
+sudo chmod 755 /etc/init.d/plateservice.sh
+update-rc.d plateservice defaults
+
+sudo crontab -e
+0 */1 * * * /etc/init.d/plateservice stop
+1 */1 * * * /etc/init.d/plateservice start
+---------------------------------------------------------
+
+0 */1 * * * /bin/sh /home/opt/matar_processos.sh
+1 */1 * * * python /home/opt/plate_video_ok.py
+
+
+------FOTOS---------
+
+#* 5-15 * * * sleep 15; python /home/opt/runtime_data_openalpr_br/plate_rc_loggin.py
+
+#30 23 * * * /bin/sh /home/opt/runtime_data_openalpr_br/renomear.sh
+

@@ -12,11 +12,9 @@ if not alpr.is_loaded():
 alpr.set_top_n(40)
 alpr.set_default_region("md")
 
-logging.basicConfig(filename='/home/opt/log/placa.log',level=logging.DEBUG)
-
+logging.basicConfig(filename='/home/opt/out/plate_log.log',level=logging.DEBUG)
 dataAtual = datetime.datetime.now().strftime("%d-%m-%Y")
-
-list_of_files = glob.glob('/home/opt/fotos/192.168.255.72/' + dataAtual + '/*') # * means all if need specific format then *.csv
+list_of_files = glob.glob('/home/opt/ftp/192.168.255.72/' + dataAtual + '/*') # * means all if need specific format then *.csv
 if not list_of_files:
 	print "Diretorio Vazio"
 	arq_foto = ""
