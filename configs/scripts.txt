@@ -6,7 +6,7 @@ sudo apt-get update
 
 sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev
 
-apt-get install python-beanstalkc
+sudo apt-get install python-beanstalkc
 
 git clone https://github.com/rafabarzotto/runtime_data_openalpr_br
 

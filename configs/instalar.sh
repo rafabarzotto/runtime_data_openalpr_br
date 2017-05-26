@@ -11,7 +11,7 @@ DIR=$(pwd)
 sudo mv /usr/share/openalpr/runtime_data /usr/share/openalpr/runtime_data_old
 sudo mv /etc/openalpr/alprd.conf /etc/openalpr/alprd.conf.bak
 
-sudo cp ../runtime_data /usr/share/openalpr/
+sudo cp ../runtime_data/ /usr/share/openalpr/
 
 sudo cp alprd.conf /etc/openalpr/
 
@@ -20,7 +20,7 @@ sudo cp plateservice.py /usr/local/bin/plateservice/
 sudo cp plateservice.sh /etc/init.d/plateservice
 
 sudo chmod 755 /usr/local/bin/plateservice/plateservice.py
-sudo chmod 755 /etc/init.d/plateservice.sh
+sudo chmod 755 /etc/init.d/plateservice
 
 cd
 
