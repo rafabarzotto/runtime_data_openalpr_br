@@ -41,7 +41,7 @@ sudo chmod 755 /usr/local/bin/plateservice/matar_processos.sh
 sudo chmod 755 /etc/init.d/plateservice.sh
 sudo update-rc.d plateservice defaults
 sudo update-rc.d -f alprd remove
-sudo update-rc.d -f openalprd-daemon remove
+sudo update-rc.d -f openalpr-daemon remove
 
 ---------------------------------------------------------
 

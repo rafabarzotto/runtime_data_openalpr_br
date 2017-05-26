@@ -30,7 +30,7 @@ sudo mkdir out
 sudo mkdir fotos
 
 sudo update-rc.d -f alprd remove
-sudo update-rc.d -f openalprd-daemon remove
+sudo update-rc.d -f openalpr-daemon remove
 sudo update-rc.d plateservice defaults
 
 echo "OK"
