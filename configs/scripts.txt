@@ -1,20 +1,34 @@
 --------VIDEO-------
 
-Ubuntu 16.04-05
+Ubuntu 16.04-02
+
+sudo apt-get update
 
 sudo apt-get update && sudo apt-get install -y openalpr openalpr-daemon openalpr-utils libopenalpr-dev
 
+apt-get install python-beanstalkc
+
 git clone https://github.com/rafabarzotto/runtime_data_openalpr_br
+
+########################################################
+
+sudo crontab -e
+0 */1 * * * /etc/init.d/plateservice stop
+1 */1 * * * /etc/init.d/plateservice start
+
+
+
+##########################################################
+
+SCRIPT 
 
 cd /usr/share/openalpr
 sudo mv runtime_data runtime_data_old
 
-sudo cp ---->
+sudo cp -R runtime_data /usr/share/openalpr/
 
-apt-get install python-beanstalkc
-
-update-rc.d -f alprd remove
-update-rc.d -f openalprd-daemon remove
+cd /etc/openalpr
+sudo mv alprd
 
 mkdir out
 mkdir fotos
@@ -25,12 +39,13 @@ sudo cp plateservice.sh /etc/init.d/
 sudo chmod 755 /usr/local/bin/plateservice/plateservice.py
 sudo chmod 755 /usr/local/bin/plateservice/matar_processos.sh
 sudo chmod 755 /etc/init.d/plateservice.sh
-update-rc.d plateservice defaults
+sudo update-rc.d plateservice defaults
+sudo update-rc.d -f alprd remove
+sudo update-rc.d -f openalprd-daemon remove
 
-sudo crontab -e
-0 */1 * * * /etc/init.d/plateservice stop
-1 */1 * * * /etc/init.d/plateservice start
 ---------------------------------------------------------
+
+Manual SEM SCRIPT DE SERVIÇO
 
 0 */1 * * * /bin/sh /home/opt/matar_processos.sh
 1 */1 * * * python /home/opt/plate_video_ok.py
@@ -41,4 +56,3 @@ sudo crontab -e
 #* 5-15 * * * sleep 15; python /home/opt/runtime_data_openalpr_br/plate_rc_loggin.py
 
 #30 23 * * * /bin/sh /home/opt/runtime_data_openalpr_br/renomear.sh
-

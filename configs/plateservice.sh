@@ -15,6 +15,12 @@ PIDFILE=/var/run/plateservice.pid
 LOGFILE=/var/log/plateservice.log
 PIDNAME=plateservice
 
+#check privileges
+if [ `id -u` -ne 0 ]; then
+  echo "É preciso rodar com sudo"
+  exit 1
+fi
+
 start() {
   if [ -f "$PIDFILE" ] && kill -0 $(cat "$PIDFILE"); then
     echo 'Service already running' >&2
