@@ -1,0 +1,48 @@
+cd /lib/systemd/system/
+sudo nano hello.service
+
+
+
+
+[Unit]
+Description=Hello World
+After=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/hello_world.py
+Restart=on-abort
+ 
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+
+
+
+
+
+
+
+sudo chmod 644 /lib/systemd/system/hello.service
+chmod +x /home/pi/hello_world.py
+sudo systemctl daemon-reload
+sudo systemctl enable hello.service
+sudo systemctl start hello.service
+
+
+
+# Check status
+sudo systemctl status hello.service
+ 
+# Start service
+sudo systemctl start hello.service
+ 
+# Stop service
+sudo systemctl stop plate.service
+ 
+# Check service's log
+sudo journalctl -f -u plate.service

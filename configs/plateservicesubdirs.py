@@ -57,11 +57,26 @@ def main():
        plates.close()
        print s
        if prog.match(plate):
-          print 'Match Plate'
-	  f = open(dir_saida + plate + ".txt", "w")
-	  f.write(plate)
-	  f.close()
-          opengate()
+          if "cam1-cam1" in str(uuid):
+            f = open(dir_saida + "M54/" + plate + ".txt", "w")
+            f.write(plate)
+            f.close()
+            opengate()
+          if "cam1-cam2" in str(uuid):
+            f = open(dir_saida + "M55/" + plate + ".txt", "w")
+            f.write(plate)
+            f.close()
+            opengate()
+          if "cam1-cam3" in str(uuid):
+            f = open(dir_saida + "M56/" + plate + ".txt", "w")
+            f.write(plate)
+            f.close()
+            opengate()
+          if "cam1-cam4" in str(uuid):
+            f = open(dir_saida + "M57/" + plate + ".txt", "w")
+            f.write(plate)
+            f.close()
+            opengate()
        else:
           print 'Not Match Plate'
 
